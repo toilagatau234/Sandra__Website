@@ -10,10 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+from dotenv import load_dotenv
+load_dotenv() # Load environment variables from .env file
 from pathlib import Path
+import os
+import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
 
 # Quick-start development settings - unsuitable for production
@@ -41,13 +46,17 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
 
-    'accounts',
+    'users',
     'products',
-    'cart',
+    'shops',
+    'carts',
     'orders',
     'payments',
-    'reviews',
-    'finance',
+    'recommendations',
+    'chatbot',
+    'admin_panel',
+    'notifications',
+    'shipping',
 ]
 
 MIDDLEWARE = [
@@ -86,8 +95,15 @@ WSGI_APPLICATION = 'Sandra__Website.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('DB_NAME'),        
+        'USER': os.getenv('DB_USER'),        
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),        
+        'PORT': os.getenv('DB_PORT'),        
+
     }
 }
 
