@@ -36,6 +36,21 @@ cd Sandra__Website
 ### 2. Tạo file .env
 Tạo file .env dựa trên mẫu .env.example
 
+
+### kích hoạt virtual environment:
+    1. Mở PowerShell, chuyển về thư mục gốc dự án (nơi chứa manage.py):
+        cd C:\......
+
+    2. Tạo virtual environment (nếu chưa có):
+        py -3 -m venv venv
+
+    3. Kích hoạt venv trên PowerShell:
+        Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+
+    4. Rồi chạy tiếp lệnh kích hoạt:
+        .\venv\Scripts\Activate.ps1  
+
+
 ### 3. Cài đặt thư viện
     pip install -r requirements.txt
 
